@@ -1,0 +1,16 @@
+{
+    'name': 'User Translations',
+    'summary': 'Allows adding fields that users can translate themselves.',
+    'author': "Emanuel Bergsten",
+    'contributor': 'Emanuel Bergsten',
+    'maintainer': 'Emanuel Bergsten',
+#    'repository': '',
+    'category': 'Tools',
+#    'license': 'AGPL-3',
+    'version': '14.0.0.0.1',
+#    'website': 'https://vertel.se/apps/event-partner',
+#    'description': """ """,
+    'depends': ['base'],
+    'data': [],
+    'installable': True,
+}
