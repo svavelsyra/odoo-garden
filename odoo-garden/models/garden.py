@@ -5,27 +5,28 @@ class Garden(models.Model):
     _name = 'garden'
 
     name = fields.Char(string='Name')
-    plantbeds_ids = fields.One2manny(string='Plantbeds', comodel_name='garden.plantbed')
+    plantbed_ids = fields.One2many(string='Plantbeds', comodel_name='plantbed', inverse_name='garden_id')
 
 class Plantbed(models.Model):
     _name = 'plantbed'
 
     name = fields.Char(string='Name')
-    plants_ids = fields.Manny2manny(string='Plants', comodel_name='garden.plantbed')
+    garden_id = fields.Many2one(comodel_name='garden')
+    plants_ids = fields.Many2many(string='Plants', comodel_name='plant')
 
 class Plant(models.Model):
     _name = 'plant'
 
     latin_name = fields.Char(string='Latin Name')
     local_name = fields.Char(string='Local Name')
-    perennial = fields.Bool(string='Perennial')
-    pregrow = fields.Manny2manny(string='Pregrow', comodel_name='garden.month')
-    plant_period = fields.Manny2manny(string='Plant Period', comodel_name='garden.month')
-    flower_period = fields.Manny2manny(string='Flower Period', comodel_name='garden.month')
-    zone = fields.Manny2manny(string='Growth Zone', comodel_name='garden.zone')
-    plantbed_ids = fields.Manny2manny(string='Plant Beds', comodel_name='garden.plantbed')
-    main_image = ''
-    images = ''
+    perennial = fields.Boolean(string='Perennial')
+    pregrow = fields.Many2many(string='Pregrow', comodel_name='month')
+    # plant_period = fields.Many2many(string='Plant Period', comodel_name='garden.month')
+    # flower_period = fields.Many2many(string='Flower Period', comodel_name='garden.month')
+    # zone = fields.Many2many(string='Growth Zone', comodel_name='garden.zone')
+    # plantbed_ids = fields.Many2many(string='Plant Beds', comodel_name='garden.plantbed')
+    main_image = fields.Binary()
+    images = fields.Binary()
     description = fields.Char(string='Description')
     external_link = fields.Char(string='Link')
 
