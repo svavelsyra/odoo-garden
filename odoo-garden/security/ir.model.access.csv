@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_garden,access.garden,model_garden,base.group_user,1,1,1,1
+access_garden_plantbed,access.garden.plantbed,model_plantbed,base.group_user,1,1,1,1
+access_garden_plant,access.garden.plant,model_plant,base.group_user,1,1,1,1
+access_garden_month,access.garden.month,model_month,base.group_user,1,1,1,1

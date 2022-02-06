@@ -9,7 +9,9 @@
     'author': 'Svavelsyra',
     'website': 'http://www.h2so4.se',
     'depends': ['base'],
-    'data': ["views/views.xml"],
+    'data': [
+        "security/ir.model.access.csv", 
+        "views/views.xml"],
     'qweb': [],
     'auto_install': False,
 }
