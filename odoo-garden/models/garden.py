@@ -18,7 +18,11 @@ class Plant(models.Model):
     _name = 'plant'
 
     latin_name = fields.Char(string='Latin Name')
-    local_name = fields.Char(string='Local Name')
+    local_name = fields.Char(string='Local Name',
+            compute='get_local_name',
+            inverse='set_local_name')
+    local_name_translation_id = fields.Many2one('translation.field')
+
     perennial = fields.Boolean(string='Perennial')
     pregrow = fields.Many2many(string='Pregrow', comodel_name='month')
     # plant_period = fields.Many2many(string='Plant Period', comodel_name='garden.month')
@@ -29,6 +33,13 @@ class Plant(models.Model):
     images = fields.Binary()
     description = fields.Char(string='Description')
     external_link = fields.Char(string='Link')
+
+    def _get_local_name(self):
+        return local_name_translation_id.get_translation()
+
+    def _set_local_name(self):
+        local_name_translation_id.update_translation(self.local_name)
+
 
 class Month(models.Model):
     _name = 'month'
